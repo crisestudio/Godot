@@ -4,6 +4,7 @@ onready var Ani
 onready var Root = $"../../"
 onready var FSM = $"../"
 
+
 func _ready():
 	yield(get_tree(), "idle_frame")
 	Ani = Root.get_node("Pacifica/AnimationPlayer")
@@ -31,13 +32,16 @@ func Update(delta):
 	
 	if current != Vector2.ZERO:
 		FSM.direction = current
-	
-	if !left or !right or !down or !up:
+	else:
 		FSM.old_direction = FSM.direction
 		FSM.ChangeState("IDLE")
 
 func Physics(delta):
-	if Ani.current_animation != "IDLE":
-		Ani.play("IDLE")
 	
-	FSM.Rotate_Angle(FSM.direction)
+	if Ani.current_animation != "WALK":
+		Ani.play("WALK")
+	
+	var dir = Vector3(-FSM.direction.x * FSM.speed, 0, FSM.direction.y * FSM.speed)
+	
+	Root.move_and_slide(dir)
+	

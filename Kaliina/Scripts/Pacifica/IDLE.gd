@@ -29,7 +29,6 @@ func Update(delta):
 func Physics(delta):
 	if Ani == null:
 		return
+	
 	if Ani.current_animation != "IDLE":
 		Ani.play("IDLE")
-		
-	FSM.Rotate_Angle(FSM.old_direction)
