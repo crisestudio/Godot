@@ -29,6 +29,9 @@ func Update(delta):
 func Physics(delta):
 	if Ani == null:
 		return
+
+	var walk_blend = FSM.Ani.get("parameters/WALK/blend_position")
 	
-	if Ani.current_animation != "IDLE":
-		Ani.play("IDLE")
+	if walk_blend != 0:
+		if walk_blend > 0.1:
+			FSM.Ani.set("parameters/WALK/blend_position", walk_blend - 0.1)

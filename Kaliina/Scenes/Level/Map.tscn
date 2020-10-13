@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Characters/Pacifica.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Characters/Rosa.tscn" type="PackedScene" id=2]
 
 [sub_resource type="QuadMesh" id=1]
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.227451, 0.447059, 0.235294, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0 )
 
 [node name="Map" type="Spatial"]
 
@@ -24,3 +28,12 @@ shadow_enabled = true
 transform = Transform( 100, 0, 0, 0, -4.37114e-06, 1, 0, -100, -4.37114e-08, 0, -0.401793, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 5.55112e-17, 0, -9.09495e-13, 1, 0, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="Rosa" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.847789, 0, -0.530334, 0, 1, 0, 0.530334, 0, -0.847789, 2.64932, 0, 3.00339 )

@@ -5,6 +5,7 @@ onready var direction = Vector2.DOWN
 onready var old_direction = Vector2.DOWN
 onready var Root = $"../"
 export(float) var speed = 5
+onready var Ani = $"../AnimationTree"
 
 
 func _process(delta):

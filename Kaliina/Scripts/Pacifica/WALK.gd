@@ -1,13 +1,12 @@
 extends Spatial
 
-onready var Ani
+
 onready var Root = $"../../"
 onready var FSM = $"../"
 
 
 func _ready():
 	yield(get_tree(), "idle_frame")
-	Ani = Root.get_node("Pacifica/AnimationPlayer")
 
 
 func Update(delta):
@@ -38,10 +37,13 @@ func Update(delta):
 
 func Physics(delta):
 	
-	if Ani.current_animation != "WALK":
-		Ani.play("WALK")
+	var walk_blend = FSM.Ani.get("parameters/WALK/blend_position")
+	
+	if walk_blend < 0.9:
+		FSM.Ani.set("parameters/WALK/blend_position", walk_blend + 0.1)
+
 	
 	var dir = Vector3(-FSM.direction.x * FSM.speed, 0, FSM.direction.y * FSM.speed)
 	
-	Root.move_and_slide(dir)
+	Root.move_and_collide(dir)
 	
