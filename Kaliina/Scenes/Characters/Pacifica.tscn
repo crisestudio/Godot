@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Pacifica/FSM.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Characters/Pacifica 3D file.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Characters/Pacifica.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Pacifica/IDLE.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/Pacifica/WALK.gd" type="Script" id=15]
 
@@ -27,7 +28,10 @@ nodes/WALK/node = SubResource( 4 )
 nodes/WALK/position = Vector2( -160, 140 )
 node_connections = [ "output", 0, "WALK" ]
 
-[node name="Pacifica" type="KinematicBody"]
+[node name="Pacifica" type="KinematicBody" groups=[
+"Player",
+]]
+script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.11547, 0 )

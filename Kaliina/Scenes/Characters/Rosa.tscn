@@ -47,7 +47,7 @@ script = ExtResource( 3 )
 tree_root = SubResource( 5 )
 anim_player = NodePath("../Rosa/AnimationPlayer")
 active = true
-parameters/WALK/blend_position = 0.956
+parameters/WALK/blend_position = 0.0
 
 [node name="Rosa" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )

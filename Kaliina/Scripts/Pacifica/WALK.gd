@@ -18,16 +18,16 @@ func Update(delta):
 	
 	if Input.is_action_pressed("LEFT"):
 		left = true
-		current.x = -1
+		current.x = 1
 	if Input.is_action_pressed("RIGHT"):
 		right = true
-		current.x = 1
+		current.x = -1
 	if Input.is_action_pressed("DOWN"):
 		down = true
-		current.y = -1
+		current.y = 1
 	if Input.is_action_pressed("UP"):
 		up = true
-		current.y = 1
+		current.y = -1
 	
 	if current != Vector2.ZERO:
 		FSM.direction = current
